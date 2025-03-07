@@ -5,171 +5,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SPb Inside – Экскурсии по Санкт-Петербургу</title>
   <meta name="description" content="Уникальные экскурсии по Санкт-Петербургу от опытных гидов. Бронируйте прямо на сайте!" />
-  <meta name="keywords" content="экскурсии Санкт-Петербург, необычные экскурсии СПб, авторские туры по Петербургу, экскурсии на крышах, речные прогулки СПб" />
-  <!-- Open Graph -->
-  <meta property="og:title" content="SPb Inside – Экскурсии по Санкт-Петербургу" />
-  <meta property="og:description" content="Уникальные экскурсии от профессиональных гидов. Ощутите красоту Северной столицы!" />
-  <meta property="og:image" content="images/spb-team.jpeg" />
-  <meta property="og:url" content="https://spbinside.ru" />
-  <meta property="og:type" content="website" />
-  <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="SPb Inside — Экскурсии по Санкт-Петербургу" />
-  <meta name="twitter:description" content="Уникальные экскурсии, комфортный транспорт, лучшие гиды!" />
-  <meta name="twitter:image" content="images/spb-team.jpeg" />
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTTXRN41b5rCjwS6J+/dH3I7E3jH+z6fP2+vMjPJzp2d4HgR8DOP+J4l7rCJ/1Q1VnfdKVQJpA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Preload Fonts -->
-  <link rel="preload" href="fonts/GothamPro.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="preload" href="fonts/GothaPro-Medium.ttf" as="font" type="font/ttf" crossorigin>
+  <meta name="keywords" content="экскурсии Санкт-Петербург, необычные экскурсии СПб, авторские туры по Петербургу" />
+
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css" />
-  <!-- Structured Data: Organization and FAQ schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "TouristInformationCenter", 
-    "name": "SPb Inside",
-    "url": "https://spbinside.ru",
-    "telephone": "+7 (999) 123-45-67",
-    "email": "info@spbinside.ru",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Невский проспект, д. 10",
-      "addressLocality": "Санкт-Петербург",
-      "addressCountry": "RU"
-    }
+  <style>
+  .header__social {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    gap: 0.5rem; /* icons closer together */
   }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Можно ли оплатить экскурсию онлайн?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Да, мы принимаем онлайн-оплату (карты Visa/MasterCard). После оформления заявки с вами свяжется менеджер и пришлёт ссылку на оплату."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Есть ли скидки для групп?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Да, при бронировании от 10 человек предусмотрены скидки. Подробности можно уточнить у менеджера."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Как отменить или перенести экскурсию?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Достаточно связаться с нами по телефону или электронной почте. Перенос возможен при наличии свободных мест на другую дату."
-        }
-      }
-    ]
+  .header-social-link {
+    transform: scale(1);
+    transition: transform 0.2s ease;
   }
-  </script>
+  .header-social-link:hover {
+    transform: scale(1.3);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  </style>
+
+  <!-- Font Awesome (иконки) -->
+  <script src="https://kit.fontawesome.com/2260ab7231.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <!-- Затемняющая подложка -->
+  <div class="site-overlay" id="siteOverlay"></div>
+
   <!-- Кнопка "Вверх" -->
   <button class="scroll-top" id="scrollTopBtn" aria-label="Прокрутить вверх">↑</button>
   
   <!-- Шапка -->
   <header class="header">
     <div class="header__logo" id="logo">SPb Inside</div>
+    <div class="header__social">
+      <a href="#" aria-label="WhatsApp" class="header-social-link">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="#" aria-label="Telegram" class="header-social-link">
+        <i class="fab fa-telegram-plane"></i>
+      </a>
+      <a href="#" aria-label="Instagram" class="header-social-link">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
     <button class="header__burger" id="burgerBtn" aria-label="Открыть меню">
       <span></span>
       <span></span>
       <span></span>
     </button>
-    <!-- Навигация (бургер для мобильного) -->
     <nav class="header__nav" id="mainNav">
       <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" href="#faq">FAQ</a></li>
         <li class="nav__item"><a class="nav__link" href="#hero">Главная</a></li>
         <li class="nav__item"><a class="nav__link" href="#tours">Экскурсии</a></li>
         <li class="nav__item"><a class="nav__link" href="#about">О компании</a></li>
-        <li class="nav__item"><a class="nav__link" href="#contacts">Контакты</a></li>
-        <li class="nav__item"><a class="nav__link" href="#faq">FAQ</a></li>
       </ul>
     </nav>
   </header>
   <div class="header-offset"></div>
-
+  
   <!-- Основной контент -->
   <main class="main">
     <!-- HERO -->
     <section class="hero scroll-section" id="hero">
       <div class="hero__overlay">
-        <!-- New Hero Text -->
-        <h1 class="hero__title">Исследуй неожиданный Петербург</h1>
-        <p class="hero__subtitle">Авторские экскурсии по скрытым уголкам Санкт-Петербурга</p>
+        <h1 class="hero__title">Исследуйте Петербург вместе с нами</h1>
+        <p class="hero__subtitle">Авторские экскурсии по скрытым от глаз уголкам города</p>
         <div class="hero__buttons">
-          <button class="btn btn--primary" id="bookNowBtn" data-tour="">Забронировать</button>
-          <button class="btn btn--secondary" id="contactBtn" data-scroll="contacts">Контакты</button>
+          <button class="btn btn--primary" id="bookNowBtn">Забронировать</button>
+          <button class="btn btn--secondary" data-scroll="contacts">Контакты</button>
+        </div>
+      </div>
+      <!-- Модальное окно быстрого бронирования (Hero) -->
+      <div class="modal" id="quickBookingModal" aria-hidden="true">
+        <div class="modal__content small-modal">
+          <button class="modal__close" id="quickBookingClose" aria-label="Закрыть модальное окно">×</button>
+          <h2 class="modal__title">Быстрое бронирование</h2>
+          <p>Для быстрого бронирования и вопросов напишите номер телефона. Менеджер свяжется с вами в ближайшее время.</p>
+          <div class="form-group">
+            <input type="tel" id="quickBookingPhone" placeholder="+7 (999) 999-99-99" />
+          </div>
+          <button class="btn btn--primary" id="quickBookingSubmit">Отправить</button>
+          <p style="margin-top:1rem;">но лучше посмотреть и выбрать самим 👀</p>
         </div>
       </div>
     </section>
     
-    <!-- Раздел "Популярные экскурсии" -->
+    <!-- Экскурсии -->
     <section class="tours scroll-section" id="tours">
       <h2 class="section-title">Популярные экскурсии</h2>
-      <div class="tours__container">
-        <!-- Экскурсия №1 -->
-        <div class="tour">
-          <div class="tour__card">
-            <div class="tour__image">
-              <img src="images/image1.jpeg" alt="Речная прогулка по каналам" loading="lazy" />
-            </div>
-            <div class="tour__content">
-              <h3 class="tour__title">Речная прогулка по каналам</h3>
-              <p class="tour__info">На теплоходе по рекам и каналам</p>
-              <button class="btn btn--primary tour__button" data-modal='{"title": "Речная прогулка по каналам", "info": "Маршрут: Невский пр., река Мойка, канал Грибоедова.\nДлительность: ~1,5 часа.\nОписание: Прогулка по историческим каналам.\nЦена (групповая): 1500 руб., Цена (индивидуальная): 2000 руб.", "images": ["images/image1.jpeg", "images/image2.jpeg", "images/image3.jpeg"]}'>
-                Подробнее
-              </button>
-            </div>
-          </div>
-        </div>
-        <!-- Экскурсия №2 -->
-        <div class="tour">
-          <div class="tour__card">
-            <div class="tour__image">
-              <img src="images/briges_background.jpeg" alt="Ночной развод мостов" loading="lazy" />
-            </div>
-            <div class="tour__content">
-              <h3 class="tour__title">Ночной развод мостов</h3>
-              <p class="tour__info">Ночное шоу разводных мостов</p>
-              <button class="btn btn--primary tour__button" data-modal='{"title": "Ночной развод мостов", "info": "Старт в 00:30, длительность: ~2 часа.\nОписание: Ночная прогулка с видом на развод мостов.\nЦена (групповая): 2000 руб., Цена (индивидуальная): 2500 руб.", "images": ["images/image1.jpeg", "images/image2.jpeg"]}'>
-                Подробнее
-              </button>
-            </div>
-          </div>
-        </div>
-        <!-- Экскурсия №3 -->
-        <div class="tour">
-          <div class="tour__card">
-            <div class="tour__image">
-              <img src="images/tour3.jpeg" alt="Дворцовый Петербург" loading="lazy" />
-            </div>
-            <div class="tour__content">
-              <h3 class="tour__title">Дворцовый Петербург</h3>
-              <p class="tour__info">Экскурсия по знаменитым дворцам</p>
-              <button class="btn btn--primary tour__button" data-modal='{"title": "Дворцовый Петербург", "info": "Зимний дворец, Михайловский дворец, особняки на набережной.\nОписание: Экскурсия по дворцовым комплексам Петербурга.\nЦена (групповая): 1800 руб., Цена (индивидуальная): 2300 руб.", "images": ["images/image1.jpeg", "images/image2.jpeg", "images/image3.jpeg"]}'>
-                Подробнее
-              </button>
-            </div>
-          </div>
-        </div>
+      <div class="tours__container" id="toursContainer">
+        <!-- Генерация карточек экскурсий через script.js -->
       </div>
     </section>
     
-    <!-- Раздел "Почему выбирают нас" -->
+    <!-- Почему выбирают нас (прямоугольники) -->
     <section class="why-us scroll-section" id="why-us">
+      <h2 class="section-title">Почему выбирают нас</h2>
       <div class="why-us__container">
-        <h2 class="section-title">Почему выбирают нас</h2>
         <div class="benefits">
           <div class="benefit">
             <div class="benefit__icon"><i class="fas fa-star"></i></div>
@@ -191,59 +126,36 @@
       </div>
     </section>
     
-    <!-- Раздел "Отзывы" -->
+    <!-- Отзывы (несколько карточек в виде прямоугольников) -->
     <section class="reviews scroll-section" id="reviews">
       <h2 class="section-title">Отзывы наших клиентов</h2>
-      <div class="reviews__container">
-        <div class="review">
-          <div class="review__author">Мария</div>
-          <div class="review__text">«Очень понравилась экскурсия по рекам и каналам! Гид замечательный, много интересных фактов услышали!»</div>
-        </div>
-        <div class="review">
-          <div class="review__author">Андрей</div>
-          <div class="review__text">«Отличная организация, всё чётко по времени, автобусы комфортные, успели посмотреть весь город!»</div>
-        </div>
-        <div class="review">
-          <div class="review__author">Светлана</div>
-          <div class="review__text">«Спонтанно решили пойти на ночную экскурсию по разводным мостам – осталось незабываемое впечатление!»</div>
-        </div>
+      <div class="reviews__container" id="reviewsContainer">
+        <!-- Заполняется динамически (script.js) массивом отзывов -->
       </div>
     </section>
     
-    <!-- Раздел "О компании" -->
+    <!-- О компании -->
     <section class="about scroll-section" id="about">
-      <div class="about__image">
-        <img src="images/spb-team.jpeg" alt="Команда SPb Inside" loading="lazy" />
-      </div>
-      <div class="about__content">
-        <h2 class="section-title">О компании</h2>
-        <p>Наша экскурсионная компания уже более 10 лет помогает гостям и жителям Санкт-Петербурга открывать уникальные грани Северной столицы. Мы гордимся своими опытными гидами и комфортным транспортом.</p>
-        <p>Тысячи довольных туристов доверили нам показать самые красивые и значимые места города. Присоединяйтесь!</p>
+      <div class="about__container">
+        <div class="about__image">
+          <img src="images/spb-team.jpeg" alt="Команда SPb Inside" loading="lazy" />
+        </div>
+        <div class="about__content">
+          <h2 class="section-title">О компании</h2>
+          <p id="aboutCompanyText">
+            Наша экскурсионная компания уже более 10 лет помогает гостям и жителям Санкт-Петербурга 
+            открывать уникальные грани Северной столицы. Мы гордимся своими опытными гидами и комфортным транспортом.
+            Тысячи довольных туристов доверили нам показать самые красивые и значимые места города. Присоединяйтесь!
+          </p>
+        </div>
       </div>
     </section>
     
-    <!-- Раздел "FAQ" -->
+    <!-- FAQ -->
     <section class="faq scroll-section" id="faq">
       <h2 class="section-title">Часто задаваемые вопросы</h2>
-      <div class="faq__container">
-        <div class="faq__item">
-          <button class="faq__question" aria-expanded="false">Можно ли оплатить экскурсию онлайн?</button>
-          <div class="faq__answer">
-            <p>Да, мы принимаем онлайн-оплату (карты Visa/MasterCard). После оформления заявки с вами свяжется менеджер и пришлёт ссылку на оплату.</p>
-          </div>
-        </div>
-        <div class="faq__item">
-          <button class="faq__question" aria-expanded="false">Есть ли скидки для групп?</button>
-          <div class="faq__answer">
-            <p>Да, при бронировании от 10 человек предусмотрены скидки. Подробности можно уточнить у менеджера.</p>
-          </div>
-        </div>
-        <div class="faq__item">
-          <button class="faq__question" aria-expanded="false">Как отменить/перенести экскурсию?</button>
-          <div class="faq__answer">
-            <p>Достаточно связаться с нами по телефону или электронной почте. Перенос возможен при наличии свободных мест на другую дату.</p>
-          </div>
-        </div>
+      <div class="faq__container" id="faqContainer">
+        <!-- Динамически рендерит FAQ (script.js) -->
       </div>
     </section>
   </main>
@@ -254,57 +166,61 @@
       <div class="footer__info">
         <h3 class="footer__title">SPb Inside</h3>
         <p>© 2025, Все права защищены.</p>
+        <p id="footerAdditionalText"></p>
       </div>
       <div class="footer__contact">
         <h3 class="footer__title">Контакты</h3>
-        <p><i class="fas fa-phone-alt"></i> +7 (999) 123-45-67</p>
-        <p><i class="fas fa-envelope"></i> info@spbinside.ru</p>
-        <p><i class="fas fa-map-marker-alt"></i> Невский проспект, д. 10, Санкт-Петербург</p>
+        <p><i class="fas fa-phone-alt"></i> <a href="tel:+79991234567" id="footerPhone">+7 (999) 123-45-67</a></p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:info@spbinside.ru" id="footerEmail">info@spbinside.ru</a></p>
+        <p><i class="fas fa-map-marker-alt"></i> <span id="footerAddress">Невский проспект, д. 10, Санкт-Петербург</span></p>
       </div>
       <div class="footer__social">
         <h3 class="footer__title">Мы в соцсетях</h3>
         <div class="social">
-          <a href="https://t.me/yourchannel" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
-          <a href="https://wa.me/yourwhatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://www.instagram.com/yourprofile" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <!-- WhatsApp -->
+          <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <!-- Telegram -->
+          <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+          <!-- Instagram -->
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
     </div>
   </footer>
   
-  <!-- Модальное окно для деталей экскурсии -->
-  <div class="modal" id="detailsModal" aria-hidden="true">
-    <div class="modal__content">
+  <!-- Модальное окно (детали экскурсии) -->
+  <div class="modal" id="detailsModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal__content modal-drag-area">
+      <button class="modal__close" id="modalCloseBtn" aria-label="Закрыть модальное окно">×</button>
       <div class="modal__photo">
         <img src="" alt="Изображение экскурсии" id="modalImage" loading="lazy">
-        <div class="modal__dots" id="carouselDots"></div>
+        <div class="modal__dots overlay-dots" id="carouselDots"></div>
       </div>
       <div class="modal__text">
         <h3 class="modal__title" id="modalTitle" tabindex="0"></h3>
         <p class="modal__info" id="modalInfo"></p>
         <button class="btn btn--primary modal__booking-btn" id="modalBookingBtn">Забронировать</button>
       </div>
-      <button class="modal__close" id="modalCloseBtn" aria-label="Закрыть модальное окно">×</button>
     </div>
   </div>
   
   <!-- Боковая панель бронирования -->
-  <div class="sidebar" id="bookingSidebar" aria-hidden="true">
+  <div class="sidebar" id="bookingSidebar" role="dialog" aria-labelledby="bookingFormTitle" aria-hidden="true">
     <div class="sidebar__content">
       <button class="sidebar__close" id="sidebarCloseBtn" aria-label="Закрыть панель">×</button>
+      <div class="booking-summary">
+        <img id="bookingTourImg" alt="Миниатюра тура" />
+        <h2 class="booking-summary__title" id="bookingTourTitle">Бронирование</h2>
+      </div>
       <form class="booking-form" id="bookingForm">
-        <h2 class="booking-form__title">Бронирование</h2>
         <p class="booking-form__subtitle">Оставьте заявку, и наш менеджер свяжется с вами для подтверждения экскурсии.</p>
         <div class="form-group">
-          <select id="bookingTourSelect" required>
+          <select id="bookingTourSelect">
             <option value="" disabled selected>Выбрать экскурсию</option>
-            <option value="Речная прогулка по каналам">Речная прогулка по каналам</option>
-            <option value="Ночной развод мостов">Ночной развод мостов</option>
-            <option value="Дворцовый Петербург">Дворцовый Петербург</option>
           </select>
         </div>
         <div class="form-group">
-          <select id="bookingTypeSelect" required>
+          <select id="bookingTypeSelect">
             <option value="" disabled selected>Выбрать формат</option>
             <option value="Групповая">Групповая</option>
             <option value="Индивидуальная">Индивидуальная</option>
@@ -319,7 +235,7 @@
           </select>
         </div>
         <div class="form-group">
-          <input type="date" id="bookingDateField" required placeholder="Желаемая дата">
+          <input type="date" id="bookingDateField" placeholder="Желаемая дата">
         </div>
         <div class="people-count">
           <label>Взрослые</label>
@@ -339,10 +255,10 @@
         </div>
         <div class="total-price">Итого: <span id="totalPrice">0</span> ₽</div>
         <div class="form-group">
-          <input type="text" id="bookingNameField" placeholder="Ваше имя" required>
+          <input type="text" id="bookingNameField" placeholder="Ваше имя">
         </div>
         <div class="form-group">
-          <input type="tel" id="bookingPhoneField" placeholder="+7 (999) 999-99-99" required>
+          <input type="tel" id="bookingPhoneField" placeholder="+7 (999) 999-99-99">
         </div>
         <div class="form-group">
           <textarea id="bookingComment" placeholder="Ваш комментарий... (по желанию)"></textarea>
@@ -351,8 +267,49 @@
       </form>
     </div>
   </div>
-  
-  <!-- Подключение JavaScript -->
+
+  <!-- Основной скрипт -->
   <script src="js/script.js"></script>
+  <script>
+  (function(){
+    const quickBookingModal = document.getElementById('quickBookingModal');
+    const quickBookingClose = document.getElementById('quickBookingClose');
+    const quickBookingSubmit = document.getElementById('quickBookingSubmit');
+    const quickBookingPhone = document.getElementById('quickBookingPhone');
+    const bookNowBtnHero = document.getElementById('bookNowBtn');
+
+    // Открытие маленького модального
+    bookNowBtnHero.addEventListener('click', () => {
+      quickBookingModal.setAttribute('aria-hidden', 'false');
+      quickBookingModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    });
+
+    // Закрытие
+    quickBookingClose.addEventListener('click', () => {
+      quickBookingModal.setAttribute('aria-hidden', 'true');
+      quickBookingModal.style.display = 'none';
+      document.body.style.overflow = '';
+    });
+
+    quickBookingModal.addEventListener('click', (e)=>{
+      if(e.target === quickBookingModal){
+        quickBookingClose.click();
+      }
+    });
+
+    // Отправка
+    quickBookingSubmit.addEventListener('click', () => {
+      const phoneVal = quickBookingPhone.value.trim();
+      if(!phoneVal){
+        alert("Пожалуйста, введите телефон!");
+        return;
+      }
+      alert("Заявка отправлена! (API Telegram заглушка)");
+      quickBookingPhone.value = "";
+      quickBookingClose.click();
+    });
+  })();
+  </script>
 </body>
 </html>
